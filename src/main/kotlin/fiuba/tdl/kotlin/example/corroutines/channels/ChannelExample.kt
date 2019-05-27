@@ -23,6 +23,7 @@ fun main() = runBlocking {
     println("begin")
     channel.consumeEach {
         println("Begin Consumer said consumed: $it")
+
     }
 
     println("again")

@@ -5,7 +5,7 @@ package fiuba.tdl.kotlin.example.corroutines
 import kotlinx.coroutines.*
 
 
-fun main(args: Array<String>) = runBlocking { //(1)
+fun main() = runBlocking { //(1)
     //  the GlobalScope is used to spawn a launch coroutine
     val job = GlobalScope.launch { //(2)
         val result = suspendingFunction() //(3)

@@ -9,14 +9,14 @@ import kotlinx.coroutines.*
 
 
 // suspend fun String.imprimirSaludo(){
-suspend fun String.imprimirSaludo(){
-    delay(1000)
-//    Thread.sleep(1000)
+fun String.imprimirSaludo(){
+    Thread.sleep(1000)
+//    delay(1000)
     println("Hola $this")
 }
 
 
-private suspend fun medirTiempo(block: suspend () -> Unit){
+private suspend fun measureRunTime(block: suspend () -> Unit){
 // private fun medirTiempo(block: () -> Unit){
     val start = System.nanoTime()
     block()
@@ -25,26 +25,24 @@ private suspend fun medirTiempo(block: suspend () -> Unit){
 }
 
 suspend fun main() {
-// fun main() {
 
-//    coroutineScope { //(2)
-        // de esta manera se hace bloqueante, pero aun asi esta demorando demasiado tiempo.
-        // para optimizar esto debemos generar el launch al llamar a la funcion
-        // imprimier saludo que es el que toma tiempo
-            medirTiempo{
-//                  val job = GlobalScope.launch{
-                coroutineScope{
-                    val listaDeNombres = listOf("Braian", "Santiago", "Hernan")
-                    for (nombre in listaDeNombres) {
-                        // Las corrutinas son no bloquantes
-                        // Es por esa razon que no se llega a imprimir nada
-//                        nombre.imprimirSaludo()
-                        launch {nombre.imprimirSaludo() }
-                    }
+    measureRunTime{
+        //
+        coroutineScope { //(2)
+            // de esta manera se hace bloqueante, pero aun asi esta demorando demasiado tiempo.
+            // para optimizar esto debemos generar el launch al llamar a la funcion
+            // imprimier saludo que es el que toma tiempo
+            val listaDeNombres = listOf("Braian", "Santiago", "Hernan")
+            for (nombre in listaDeNombres) {
+                // Las corrutinas son no bloquantes
+                // Es por esa razon que no se llega a imprimir nada
+                launch {
+                    nombre.imprimirSaludo()
                 }
-//                job.join()
             }
-    //  }
+        }
+//                job.join()
+    }
 
 
 
