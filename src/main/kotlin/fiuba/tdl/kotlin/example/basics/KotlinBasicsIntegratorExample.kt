@@ -1,7 +1,5 @@
 package fiuba.tdl.kotlin.example.basics
 
-import kotlinx.coroutines.*
-
 // Este ejercicio va a incorporar varios conceptos basicos de
 // programacion en Kotlin.
 

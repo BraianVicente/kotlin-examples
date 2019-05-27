@@ -1,17 +1,12 @@
 package fiuba.tdl.kotlin.example.basics
 
+import fiuba.tdl.kotlin.example.measureRunTime
 
-fun medirTiempo(block: () -> Unit){
-    val start = System.nanoTime()
-    block()
-    val end = System.nanoTime()
-    println("${(end-start)/1.0e9} seconds")
-}
 
 fun massiveRun(action: () -> Unit) {
     val n = 100
     val k = 10000
-    medirTiempo {
+    measureRunTime {
         List(n) {
             repeat(k) { action() }
         }
@@ -44,11 +39,11 @@ tailrec fun tailRecursiveFactorialOptimized(n: Long, acumulador: Long = 1): Long
 
 fun main(){
 
-    medirTiempo {
+    measureRunTime{
         tailRecursiveFactorialOptimized(16000)
     }
 
-    medirTiempo {
+    measureRunTime{
         tailRecursiveFactorial(16000)
     }
 }
