@@ -1,6 +1,6 @@
 package test.java.fiuba.clasekotlin;
 
-import main.kotlin.fiuba.clasekotlin.Horario;
+import fiuba.tdl.kotlin.example.basics.Horario;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions ;
 

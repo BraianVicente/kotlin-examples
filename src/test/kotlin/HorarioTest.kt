@@ -1,8 +1,8 @@
 //~ package test.kotlin.fiuba.clasekotlin
 
-//~ import main.kotlin.fiuba.clasekotlin.Horario
+//~ import fiuba.tdl.kotlin.example.basics.main.kotlin.fiuba.clasekotlin.Horario
 
-//~ fun main(){
+//~ fun fiuba.tdl.kotlin.example.basics.main(){
 
     //~ val primerTurnoMañan = Horario(8 ,10)
     //~ val segundTurnoMañan = Horario(10,12)
