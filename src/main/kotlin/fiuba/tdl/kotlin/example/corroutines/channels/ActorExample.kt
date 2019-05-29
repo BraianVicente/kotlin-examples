@@ -1,26 +1,9 @@
 package fiuba.tdl.kotlin.example.corroutines.channels
 
+import fiuba.tdl.kotlin.example.massiveRun
 import kotlinx.coroutines.*
 import kotlinx.coroutines.channels.actor
-import kotlin.system.measureTimeMillis
 
-suspend fun CoroutineScope.massiveRun(action: suspend () -> Unit) {
-    val n = 100  // number of coroutines to launch
-    val k = 100000 // times an action is repeated by each coroutine
-    val time = measureTimeMillis {
-
-        val jobs = List(n) {
-            coroutineScope {
-                launch {
-                    // repeat(n) repite n veces el codigo en el bloque
-                    repeat(k) { action() }
-                }
-            }
-        }
-    jobs.forEach { it.join() }
-    }
-    println("Completed ${n * k} actions in $time ms")
-}
 
 // Tipo de mensaje para counterActor
 sealed class CounterMsg

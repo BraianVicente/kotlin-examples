@@ -5,12 +5,13 @@ package fiuba.tdl.kotlin.example.corroutines.channels
  * el ultimo mensaje recibido en el canal
  */
 
-import kotlinx.coroutines.*
 import kotlinx.coroutines.channels.ConflatedBroadcastChannel
 import kotlinx.coroutines.channels.consumeEach
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 
-@ExperimentalCoroutinesApi
-@ObsoleteCoroutinesApi
+
 fun main() = runBlocking<Unit> {
     val channel = ConflatedBroadcastChannel<Int>()
 

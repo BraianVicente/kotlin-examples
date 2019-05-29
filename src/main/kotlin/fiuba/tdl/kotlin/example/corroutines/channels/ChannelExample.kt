@@ -3,31 +3,30 @@ package fiuba.tdl.kotlin.example.corroutines.channels
  * consumidor. Cada mensaje que es consumido sale del canal.
  */
 
-import kotlinx.coroutines.ObsoleteCoroutinesApi
 import kotlinx.coroutines.channels.Channel
+import kotlinx.coroutines.channels.ConflatedBroadcastChannel
 import kotlinx.coroutines.channels.consumeEach
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 
-@ObsoleteCoroutinesApi
+suspend fun oneSenderOneConsumer() = runBlocking {
+
+}
+
+
+suspend fun oneSenderTwoConsumers() = runBlocking<Unit> {
+    val channel = ConflatedBroadcastChannel<Int>()
+
+
+}
+
+
 fun main() = runBlocking {
-    val channel = Channel<Int>()
-    launch {
-        repeat(5) {
-            channel.send(it*it)
-        }
-        channel.close()
-    }
+    println("Ejemplo con un unico consumidor y productor")
+    oneSenderOneConsumer()
 
-    println("begin")
-    channel.consumeEach {
-        println("Begin Consumer said consumed: $it")
+    println("Ejemplo con dos consumidores y un productor")
+    oneSenderTwoConsumers()
 
-    }
-
-    println("again")
-    channel.consumeEach {
-        println("Again Consumer said consumed: $it")
-    }
 }

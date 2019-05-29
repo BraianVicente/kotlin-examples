@@ -2,21 +2,25 @@ package fiuba.tdl.kotlin.example.corroutines
 
 
 
-import kotlinx.coroutines.*
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 
 
-fun main() = runBlocking { //(1)
-    //  the GlobalScope is used to spawn a launch coroutine
-    val job = GlobalScope.launch { //(2)
-        val result = suspendingFunction() //(3)
-        print("$result")
+fun main() = runBlocking{
+    coroutineScope{
+        val job = launch{
+
+            println(suspendingFunction())
+        }
+
+        print("El resultado es: ")
+        job.join()
     }
-    print("The result: ")
-    job.join() //(4)
 }
 
-// La palabra reservada suspend indica que la funcion es suspendible.
+fun suspendingFunction(): String{
+    return "funcion suspendida"
 
-suspend fun suspendingFunction(): String{
-    return "suspendingFuction"
 }

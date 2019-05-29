@@ -13,14 +13,15 @@ fun massiveRun(action: () -> Unit) {
     }
 }
 
-fun tailRecursiveFactorial(n: Long, accum: Long = 1): Long {
-    val soFar = n * accum
+fun tailRecursiveFactorial(n: Long, acumulador: Long = 1): Long {
+    val valorParcial = n * acumulador
     return if (n <= 1) {
-        soFar
+        valorParcial
     } else {
-        tailRecursiveFactorial(n - 1, soFar)
+        tailRecursiveFactorial(n - 1, valorParcial)
     }
 }
+
 
 // tailrec le da la señal al compilador de que puede
 // intentar reescribir la funcion como un loop si puede.
@@ -39,11 +40,11 @@ tailrec fun tailRecursiveFactorialOptimized(n: Long, acumulador: Long = 1): Long
 
 fun main(){
 
-    measureRunTime{
-        tailRecursiveFactorialOptimized(16000)
+    massiveRun{
+        tailRecursiveFactorialOptimized(10000)
     }
 
-    measureRunTime{
-        tailRecursiveFactorial(16000)
+    massiveRun{
+        tailRecursiveFactorial(10000)
     }
 }

@@ -40,7 +40,7 @@ fun Any?.procesarCualquierCosa() {
         is String ->println("La longitud de $this es ${this.length} ")
         is Horario -> println ("El horario de clase inicia: ${this.horarioInicio} y termina ${this.horarioFin}")
         is Any? -> {
-            this!!.toString()
+            this.toString()
             println(this)
         }
         else -> println("Cualquier otra cosa que no entiendo.")
