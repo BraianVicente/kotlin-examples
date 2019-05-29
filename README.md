@@ -3,4 +3,4 @@ calculadora con la operacion de suma division y multiplicacion.
 
 Ejemplos:
 
-http://localhost:8080/calculator/add?a=10&b=%
+http://localhost:8080/calculator/add?a=10&b=5
